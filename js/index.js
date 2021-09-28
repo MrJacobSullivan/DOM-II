@@ -1,3 +1,12 @@
+// click
+document.querySelectorAll('nav a').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault()
+    const destination = a.textContent.toLowerCase().replace(' ', '-')
+    console.log(`routing to /${destination}`)
+  })
+})
+
 // load
 const queryData = () => console.log('querying data...')
 window.onload = () => queryData()
