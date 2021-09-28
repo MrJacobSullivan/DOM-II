@@ -25,6 +25,13 @@ document.querySelectorAll('nav a').forEach((link) => {
 // resize
 window.onresize = () => console.log(window.innerWidth)
 
+// dblclick
+document.querySelectorAll('img').forEach((img) => {
+  img.addEventListener('dblclick', () => {
+    img.style.display = 'none'
+  })
+})
+
 // drag and drop
 const container = document.querySelector('.content-pick')
 
