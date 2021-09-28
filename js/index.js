@@ -24,3 +24,56 @@ document.querySelectorAll('nav a').forEach((link) => {
 
 // resize
 window.onresize = () => console.log(window.innerWidth)
+
+// drag and drop
+const container = document.querySelector('.content-pick')
+
+const cards = document.querySelectorAll('.destination')
+cards.forEach((card, i) => {
+  card.style.padding = '1%'
+  card.style.border = '1px solid black'
+  card.setAttribute('draggable', true)
+  card.classList.add('draggable')
+  card.style.cursor = 'move'
+
+  if (i === 0) card.style.background = 'red'
+  if (i === 1) card.style.background = 'green'
+  if (i === 2) card.style.background = 'blue'
+
+  card.addEventListener('dragstart', () => {
+    card.style.opacity = '0.5'
+    card.classList.add('dragging')
+  })
+
+  card.addEventListener('dragend', () => {
+    card.style.opacity = '1.0'
+    card.classList.remove('dragging')
+  })
+})
+
+const getDragAfterElement = (container, x) => {
+  const draggableElements = Array.from(container.querySelectorAll('.draggable:not(.dragging)'))
+
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect()
+      const offset = x - box.top - box.height / 2
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child }
+      }
+      return closest
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element
+}
+
+container.addEventListener('dragover', (e) => {
+  e.preventDefault()
+  const afterElement = getDragAfterElement(container, e.clientX)
+  const dragging = document.querySelector('.dragging')
+  if (afterElement == null) {
+    container.appendChild(dragging)
+  } else {
+    container.insertBefore(dragging, afterElement)
+  }
+})
