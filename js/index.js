@@ -21,3 +21,6 @@ document.querySelectorAll('nav a').forEach((link) => {
     link.style.color = 'green'
   })
 })
+
+// resize
+window.onresize = () => console.log(window.innerWidth)
