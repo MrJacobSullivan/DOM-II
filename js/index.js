@@ -1,3 +1,7 @@
+// load
+const queryData = () => console.log('querying data...')
+window.onload = () => queryData()
+
 // mouseover
 const bus = document.querySelector('header img')
 bus.addEventListener('mouseover', (e) => {
