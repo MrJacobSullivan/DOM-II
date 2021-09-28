@@ -25,6 +25,9 @@ document.querySelectorAll('nav a').forEach((link) => {
 // resize
 window.onresize = () => console.log(window.innerWidth)
 
+// scroll
+window.onscroll = () => console.log('scrolling!')
+
 // select
 const content = document.querySelector('.content-section')
 const input = document.createElement('input')
