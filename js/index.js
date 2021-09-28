@@ -25,6 +25,19 @@ document.querySelectorAll('nav a').forEach((link) => {
 // resize
 window.onresize = () => console.log(window.innerWidth)
 
+// select
+const content = document.querySelector('.content-section')
+const input = document.createElement('input')
+input.setAttribute('type', 'text')
+input.setAttribute('placeholder', 'Hello world')
+
+input.addEventListener('select', (e) => {
+  const selection = e.target.value.substring(e.target.selectionStart, e.target.selectionEnd)
+  console.log(selection)
+})
+
+content.append(input)
+
 // dblclick
 document.querySelectorAll('img').forEach((img) => {
   img.addEventListener('dblclick', () => {
