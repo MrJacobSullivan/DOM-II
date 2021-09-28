@@ -64,9 +64,10 @@ const cards = document.querySelectorAll('.destination')
 cards.forEach((card, i) => {
   card.style.padding = '1%'
   card.style.border = '1px solid black'
-  card.setAttribute('draggable', true)
-  card.classList.add('draggable')
   card.style.cursor = 'move'
+
+  card.classList.add('draggable')
+  card.setAttribute('draggable', true)
 
   if (i === 0) card.style.background = 'red'
   if (i === 1) card.style.background = 'green'
