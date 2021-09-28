@@ -14,3 +14,10 @@ const h1 = document.querySelector('h1')
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') h1.style.color = 'red'
 })
+
+// focus
+document.querySelectorAll('nav a').forEach((link) => {
+  link.addEventListener('focus', () => {
+    link.style.color = 'green'
+  })
+})
